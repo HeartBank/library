@@ -1,0 +1,24 @@
+{
+  "name": "heartbank",
+  "version": "1.0.0",
+  "description": "HeartBank Library",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HeartBank/library.git"
+  },
+  "keywords": [
+    "heartbank",
+    "library",
+    "node"
+  ],
+  "author": "Thon Ly",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/HeartBank/library/issues"
+  },
+  "homepage": "https://github.com/HeartBank/library#readme"
+}
