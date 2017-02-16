@@ -1,10 +1,10 @@
 {
   "name": "heartbank",
-  "version": "1.0.0",
-  "description": "HeartBank Library",
+  "version": "0.1.0",
+  "description": "HeartBank Helper Library",
   "main": "index.js",
   "scripts": {
-    "test": "npm test"
+    "test": "jasmine-node --captureExceptions tests"
   },
   "repository": {
     "type": "git",
@@ -16,9 +16,20 @@
     "node"
   ],
   "author": "Thon Ly",
+  "email": "thonly@heartbank.ceo",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/HeartBank/library/issues"
   },
-  "homepage": "https://github.com/HeartBank/library#readme"
+  "homepage": "https://github.com/HeartBank/library#readme",
+  "devDependencies": {
+    "coinbase": "^2.0.6",
+    "express": "^4.14.1",
+    "jasmine-node": "^1.14.5",
+    "twilio": "^2.11.1"
+  },
+  "dependencies": {
+    "q": "^1.4.1",
+    "request": "^2.79.0"
+  }
 }

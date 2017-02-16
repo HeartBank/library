@@ -1,0 +1,1 @@
+var endpoints = require('./endpoints');
