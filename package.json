@@ -4,6 +4,7 @@
   "description": "HeartBank Helper Library",
   "main": "index.js",
   "scripts": {
+    "start": "node server.js",
     "test": "jasmine-node --captureExceptions tests"
   },
   "repository": {
