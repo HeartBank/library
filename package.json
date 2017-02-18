@@ -4,7 +4,6 @@
   "description": "HeartBank Helper Library",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js",
     "test": "jasmine-node --captureExceptions tests"
   },
   "repository": {
@@ -24,10 +23,7 @@
   },
   "homepage": "https://github.com/HeartBank/library#readme",
   "devDependencies": {
-    "coinbase": "^2.0.6",
-    "express": "^4.14.1",
-    "jasmine-node": "^1.14.5",
-    "twilio": "^2.11.1"
+    "jasmine-node": "^1.14.5"
   },
   "dependencies": {
     "q": "^1.4.1",
