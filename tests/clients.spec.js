@@ -1,22 +1,22 @@
 "use strict";
 
-const endpoints = require('../endpoints')("developer_key", "developer_secret");
+const endpoints = require('../endpoints')(process.env.DEVELOPER_KEY, process.env.DEVELOPER_SECRET, process.env.LOCALHOST);
 const clients = endpoints.clients();
 
 describe("Testing /clients", function() {
 
   it("auth", function() {
-    const auth = clients.auth("username", "passcode");
+    const auth = clients.auth(process.env.USERNAME, process.env.PASSCODE);
     expect(auth).toBe(null);
   });
 
   it("get", function() {
-    const get = clients.get("client_id", "auth_token");
+    const get = clients.get(process.env.CLIENT_ID, process.env.AUTH_TOKEN);
     expect(get).toBe(null);
   });
 
   it("post", function() {
-    const post = clients.post("client_id", "auth_token");
+    const post = clients.post(process.env.CLIENT_ID, process.env.AUTH_TOKEN);
     expect(post).toBe(null);
   });
 

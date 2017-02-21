@@ -2,13 +2,14 @@
 
 class Endpoints {
 
-  constructor(developer_key, developer_secret) {
+  constructor(developer_key, developer_secret, base_url="https://endpoint.heartbank.cloud") {
     this.developer_key = developer_key;
     this.developer_secret = developer_secret;
+    this.base_url = base_url;
   }
 
   clients() {
-    return require('./clients')(this.developer_key, this.developer_secret);
+    return require('./clients')(this.developer_key, this.developer_secret, this.base_url);
   }
 
   users(client_id, auth_token, ids) {

@@ -2,6 +2,8 @@
 
 const endpoints = require('../endpoints')("developer_key", "developer_secret");
 const transactions = endpoints.transactions("client_id", "auth_token", ["branch", "customer", "user"]);
+const fs = require('fs');
+const media = fs.createReadStream(__dirname + '/heartbank.gif').toString('base64');
 
 describe("Testing /transactions", function() {
 
@@ -16,12 +18,12 @@ describe("Testing /transactions", function() {
   });
 
   it("post with transaction", function() {
-    const post = transactions.post({command:"give", amount:10.40, currency:"USD", anonymity:false, description:"🏡 hello world", media:""});
+    const post = transactions.post({command:"give", amount:10.40, currency:"USD", anonymity:false, description:"🏡 hello world", media});
     expect(post).toBe(null);
   });
 
   it("post with message", function() {
-    const post = transactions.post({message:"🏡 hello world", media:""});
+    const post = transactions.post({message:"🏡 hello world", media});
     expect(post).toBe(null);
   });
 
