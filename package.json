@@ -28,5 +28,6 @@
   "dependencies": {
     "q": "^1.4.1",
     "request": "^2.79.0"
-  }
+  },
+  "engine": "node 6.9.5"
 }

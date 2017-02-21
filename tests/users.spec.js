@@ -1,7 +1,7 @@
 "use strict";
 
-const endpoints = require('../endpoints')("developer_key","developer_secret");
-const users = endpoints.users("client_id","auth_token",["branch","customer","user"]);
+const endpoints = require('../endpoints')("developer_key", "developer_secret");
+const users = endpoints.users("client_id", "auth_token", ["branch", "customer", "user"]);
 
 describe("Testing /users", function() {
 
