@@ -13,11 +13,19 @@ class Transactions {
   }
 
   get({customer, q, fetch, page, start, end, filters:{account, fund, reserve}}) {
-    return null;
+    if (customer) { // return customer's transactions
+      return null;
+    } else { // return branch's transactions
+      return null;
+    }
   }
 
   post({message, command, amount, currency, anonymity, description, media}) {
-    return null;
+    if (message) { // new transaction message
+      return null;
+    } else { // new transaction
+      return null;
+    }
   }
 
 }

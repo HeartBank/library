@@ -12,12 +12,20 @@ class Payments {
     this.user_id = user_id;
   }
 
-  get(payment_id=null) {
-    return null;
+  get({payment_id}={payment_id:null}) {
+    if (payment_id) { // return all payments
+      return null;
+    } else { // resend authorization code
+      return null;
+    }
   }
 
-  post(payment_id=null,{auth_code}) {
-    return null;
+  post({payment_id, auth_code, amount, description}) {
+    if (payment_id && auth_code) { // process payment
+      return null;
+    } else { // create new payment
+      return null;
+    }
   }
 
 }
