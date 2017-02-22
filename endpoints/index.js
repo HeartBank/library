@@ -42,4 +42,4 @@ class Endpoints {
 
 }
 
-module.exports = (developer_key, developer_secret) => new Endpoints(developer_key, developer_secret);
+module.exports = (developer_key, developer_secret, base_url) => new Endpoints(developer_key, developer_secret, base_url);

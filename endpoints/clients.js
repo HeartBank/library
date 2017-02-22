@@ -1,6 +1,6 @@
 "use strict";
 
-const request = require('request');
+const request = require('request-promise');
 
 class Clients {
 
@@ -11,14 +11,26 @@ class Clients {
   }
 
   auth(username, passcode) {
-    request
-    .post('http://google.com/img.png')
-    .form({})
-    .on('response', function(response) {
-      console.log(response.statusCode)
-      console.log(response.headers['content-type'])
-    });
-    return null;
+
+      request({
+        method: 'POST',
+        uri: this.base_url + '/clients/auth',
+        form: {username, passcode},
+        json: true,
+        headers: {
+
+        }
+      })
+
+      .then(function (body) {
+        //console.log(body);
+        return body;
+      })
+
+      .catch(function (err) {
+        console.log(err);
+      });
+
   }
 
   get(client_id, auth_token) {

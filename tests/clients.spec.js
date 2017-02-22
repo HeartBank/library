@@ -1,5 +1,6 @@
 "use strict";
 
+require('dotenv').config();
 const endpoints = require('../endpoints')(process.env.DEVELOPER_KEY, process.env.DEVELOPER_SECRET, process.env.LOCALHOST);
 const clients = endpoints.clients();
 
@@ -7,7 +8,8 @@ describe("Testing /clients", function() {
 
   it("auth", function() {
     const auth = clients.auth(process.env.USERNAME, process.env.PASSCODE);
-    expect(auth).toBe(null);
+    //expect(auth).toBe(null);
+    console.log(auth);
   });
 
   it("get", function() {
