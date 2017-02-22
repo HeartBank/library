@@ -12,33 +12,44 @@ class Clients {
 
   auth(username, passcode) {
 
-      request({
-        method: 'POST',
-        uri: this.base_url + '/clients/auth',
-        form: {username, passcode},
-        json: true,
-        headers: {
-
-        }
-      })
-
-      .then(function (body) {
-        //console.log(body);
-        return body;
-      })
-
-      .catch(function (err) {
-        console.log(err);
-      });
+    return request({
+      method: 'POST',
+      uri: this.base_url + '/clients/auth',
+      form: {username, passcode},
+      json: true,
+      headers: {"Authorization": 'Basic ' + Buffer.from(this.developer_key + ':' + this.developer_secret).toString('base64')} // Note: Cannot have Cookie
+    });
 
   }
 
   get(client_id, auth_token) {
-    return null;
+
+    return request({
+      method: 'GET',
+      uri: this.base_url + '/clients',
+      form: {},
+      json: true,
+      headers: {
+        "Authorization": 'Basic ' + Buffer.from(this.developer_key + ':' + this.developer_secret).toString('base64'),
+        "Cookie": `client=${client_id}; token=${auth_token}`
+      }
+    });
+
   }
 
   post(client_id, auth_token) {
-    return null;
+
+    return request({
+      method: 'POST',
+      uri: this.base_url + '/clients',
+      form: {},
+      json: true,
+      headers: {
+        "Authorization": 'Basic ' + Buffer.from(this.developer_key + ':' + this.developer_secret).toString('base64'),
+        "Cookie": `client=${client_id}; token=${auth_token}`
+      }
+    });
+
   }
 
 }
