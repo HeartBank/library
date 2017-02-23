@@ -7,14 +7,12 @@ const clients = endpoints.clients();
 describe("Testing /clients", () => {
 
   it("auth", done => {
-
     clients.auth(process.env.USERNAME, process.env.PASSCODE)
     .then(data => {
       console.log(data);
       expect(data.code).toBe(200);
       done();
-    })
-
+    });
   });
 
   it("get", done => {
@@ -23,7 +21,7 @@ describe("Testing /clients", () => {
       console.log(data);
       expect(data.code).toBe(200);
       done();
-    })
+    });
   });
 
   it("post", done => {
@@ -32,7 +30,7 @@ describe("Testing /clients", () => {
       console.log(data);
       expect(data.code).toBe(200);
       done();
-    })
+    });
   });
 
 });

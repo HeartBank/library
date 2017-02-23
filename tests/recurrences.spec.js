@@ -1,7 +1,8 @@
 "use strict";
 
-const endpoints = require('../endpoints')("developer_key", "developer_secret");
-const recurrences = endpoints.recurrences("client_id", "auth_token", ["branch", "customer", "user"]);
+require('dotenv').config();
+const endpoints = require('../endpoints')(process.env.DEVELOPER_KEY, process.env.DEVELOPER_SECRET, process.env.LOCALHOST);
+const recurrences = endpoints.recurrences(process.env.CLIENT_ID, process.env.AUTH_TOKEN, [process.env.BRANCH_ID, process.env.CUSTOMER_ID, process.env.USER_ID]);
 const fs = require('fs');
 const media = fs.createReadStream(__dirname + '/heartbank.gif').toString('base64');
 

@@ -11,7 +11,6 @@ class Clients {
   }
 
   auth(username, passcode) {
-
     return request({
       method: 'POST',
       uri: this.base_url + '/clients/auth',
@@ -19,11 +18,9 @@ class Clients {
       json: true,
       headers: {"Authorization": 'Basic ' + Buffer.from(this.developer_key + ':' + this.developer_secret).toString('base64')} // Note: Cannot have Cookie
     });
-
   }
 
   get(client_id, auth_token) {
-
     return request({
       method: 'GET',
       uri: this.base_url + '/clients',
@@ -34,11 +31,9 @@ class Clients {
         "Cookie": `client=${client_id}; token=${auth_token}`
       }
     });
-
   }
 
   post(client_id, auth_token) {
-
     return request({
       method: 'POST',
       uri: this.base_url + '/clients',
@@ -49,7 +44,6 @@ class Clients {
         "Cookie": `client=${client_id}; token=${auth_token}`
       }
     });
-
   }
 
 }

@@ -1,13 +1,18 @@
 "use strict";
 
-const endpoints = require('../endpoints')("developer_key","developer_secret");
-const branches = endpoints.branches("client_id","auth_token",["branch","customer","user"]);
+require('dotenv').config();
+const endpoints = require('../endpoints')(process.env.DEVELOPER_KEY, process.env.DEVELOPER_SECRET, process.env.LOCALHOST);
+const branches = endpoints.branches(process.env.CLIENT_ID, process.env.AUTH_TOKEN, [process.env.BRANCH_ID, process.env.CUSTOMER_ID, process.env.USER_ID]);
 
-describe("Testing /branches", function() {
+describe("Testing /branches", () => {
 
-  it("get", function() {
-    const get = branches.get();
-    expect(get).toBe(null);
+  it("get", done => {
+    branches.get()
+    .then(data => {
+      console.log(data);
+      expect(data.code).toBe(200);
+      done();
+    });
   });
 
 });

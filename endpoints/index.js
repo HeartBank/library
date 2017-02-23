@@ -13,7 +13,7 @@ class Endpoints {
   }
 
   users(client_id, auth_token, ids) {
-    return require('./users')(this.developer_key, this.developer_secret, client_id, auth_token, ids);
+    return require('./users')(this.developer_key, this.developer_secret, this.base_url, client_id, auth_token, ids);
   }
 
   branches(client_id, auth_token, ids) {

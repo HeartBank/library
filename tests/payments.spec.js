@@ -1,28 +1,45 @@
 "use strict";
 
-const endpoints = require('../endpoints')("developer_key", "developer_secret");
-const payments = endpoints.payments("client_id", "auth_token", ["branch", "customer", "user"]);
+require('dotenv').config();
+const endpoints = require('../endpoints')(process.env.DEVELOPER_KEY, process.env.DEVELOPER_SECRET, process.env.LOCALHOST);
+const payments = endpoints.payments(process.env.CLIENT_ID, process.env.AUTH_TOKEN, [process.env.BRANCH_ID, process.env.CUSTOMER_ID, process.env.USER_ID]);
 
-describe("Testing /payments", function() {
+describe("Testing /payments", () => {
 
-  it("get all payments", function() {
-    const get = payments.get();
-    expect(get).toBe(null);
+  it("get all payments", done => {
+    payments.get()
+    .then(data => {
+      console.log(data);
+      expect(data.code).toBe(200);
+      done();
+    });
   });
 
-  it("resend authorization code", function() {
-    const get = payments.get({payment_id:1234});
-    expect(get).toBe(null);
+  it("resend authorization code", done => {
+    payments.get({payment_id:process.env.PAYMENT_ID})
+    .then(data => {
+      console.log(data);
+      expect(data.code).toBe(200);
+      done();
+    });
   });
 
-  it("post new payment", function() {
-    const post = payments.post({amount:10.31, description:"hello world"});
-    expect(post).toBe(null);
+  it("post new payment", done => {
+    payments.post({amount:10.31, description:"hello world"})
+    .then(data => {
+      console.log(data);
+      expect(data.code).toBe(200);
+      done();
+    });
   });
 
-  it("process payment", function() {
-    const post = payments.post({payment_id:1234, auth_code:"123456"});
-    expect(post).toBe(null);
+  it("process payment", done => {
+    payments.post({payment_id:process.env.PAYMENT_ID, auth_code:process.env.AUTH_CODE})
+    .then(data => {
+      console.log(data);
+      expect(data.code).toBe(200);
+      done();
+    });
   });
 
 });
