@@ -4,7 +4,7 @@ require('dotenv').config();
 const endpoints = require('../endpoints')(process.env.DEVELOPER_KEY, process.env.DEVELOPER_SECRET, process.env.LOCALHOST);
 const clients = endpoints.clients();
 
-describe("Testing /clients", () => {
+xdescribe("Testing /clients", () => {
 
   it("auth", done => {
     clients.auth(process.env.USERNAME, process.env.PASSCODE)

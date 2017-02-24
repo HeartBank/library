@@ -19,7 +19,7 @@ class Users {
     return request({
       method: 'GET',
       uri: this.base_url + '/users/' + this.user_id,
-      form: {},
+      qs: {},
       json: true,
       headers: {
         "Authorization": 'Basic ' + Buffer.from(this.developer_key + ':' + this.developer_secret).toString('base64'),

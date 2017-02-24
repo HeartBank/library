@@ -20,7 +20,7 @@ class Payments {
       return request({
         method: 'GET',
         uri: this.base_url + '/payments/' + payment_id,
-        form: {},
+        qs: {},
         json: true,
         headers: {
           "Authorization": 'Basic ' + Buffer.from(this.developer_key + ':' + this.developer_secret).toString('base64'),
@@ -31,7 +31,7 @@ class Payments {
       return request({
         method: 'GET',
         uri: this.base_url + '/payments',
-        form: {},
+        qs: {},
         json: true,
         headers: {
           "Authorization": 'Basic ' + Buffer.from(this.developer_key + ':' + this.developer_secret).toString('base64'),

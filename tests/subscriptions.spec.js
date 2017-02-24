@@ -25,7 +25,7 @@ describe("Testing /subscriptions", () => {
   });
 
   it("edit subscription", done => {
-    subscriptions.put({subscription_id:1234, webhook:"http://example.com"})
+    subscriptions.put({subscription_id:process.env.SUBSCRIPTION_ID, webhook:"http://example.com"})
     .then(data => {
       console.log(data);
       expect(data.code).toBe(200);

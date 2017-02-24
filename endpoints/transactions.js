@@ -19,8 +19,8 @@ class Transactions {
     if (customer) { // return customer's transactions
       return request({
         method: 'GET',
-        uri: this.base_url + '/branches/' + this.branch_id + '/' + this.customer_id,
-        form: {q, fetch, page, start, end, account, fund, reserve},
+        uri: this.base_url + '/transactions/' + this.branch_id + '/' + this.customer_id,
+        qs: {q, fetch, page, start, end, account, fund, reserve},
         json: true,
         headers: {
           "Authorization": 'Basic ' + Buffer.from(this.developer_key + ':' + this.developer_secret).toString('base64'),
@@ -31,7 +31,7 @@ class Transactions {
       return request({
         method: 'GET',
         uri: this.base_url + '/transactions/' + this.branch_id,
-        form: {q, fetch, page, start, end, account, fund, reserve},
+        qs: {q, fetch, page, start, end, account, fund, reserve},
         json: true,
         headers: {
           "Authorization": 'Basic ' + Buffer.from(this.developer_key + ':' + this.developer_secret).toString('base64'),
@@ -41,7 +41,7 @@ class Transactions {
     }
   }
 
-  post({message, command, amount, currency, anonymity, description, media}) {
+  post({message, command, to, amount, currency, anonymity, description, media}) {
     if (message) { // new transaction message
       return request({
         method: 'POST',
@@ -57,7 +57,7 @@ class Transactions {
       return request({
         method: 'POST',
         uri: this.base_url + '/transactions',
-        form: {command, amount, currency, anonymity, description, media},
+        form: {command, to, amount, currency, anonymity, description, media},
         json: true,
         headers: {
           "Authorization": 'Basic ' + Buffer.from(this.developer_key + ':' + this.developer_secret).toString('base64'),

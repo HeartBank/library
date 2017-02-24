@@ -19,7 +19,7 @@ class Recurrences {
     return request({
       method: 'GET',
       uri: this.base_url + '/recurrences',
-      form: {},
+      qs: {},
       json: true,
       headers: {
         "Authorization": 'Basic ' + Buffer.from(this.developer_key + ':' + this.developer_secret).toString('base64'),
@@ -28,7 +28,7 @@ class Recurrences {
     });
   }
 
-  post({cycle, start, message, command, amount, currency, anonymity, description, media}) {
+  post({cycle, start, message, command, to, amount, currency, anonymity, description, media}) {
     if (message) { // new recurrence message
       return request({
         method: 'POST',
@@ -44,7 +44,7 @@ class Recurrences {
       return request({
         method: 'POST',
         uri: this.base_url + '/recurrences',
-        form: {cycle, start, command, amount, currency, anonymity, description, media},
+        form: {cycle, start, command, to, amount, currency, anonymity, description, media},
         json: true,
         headers: {
           "Authorization": 'Basic ' + Buffer.from(this.developer_key + ':' + this.developer_secret).toString('base64'),
@@ -54,7 +54,7 @@ class Recurrences {
     }
   }
 
-  put({recurrence_id, cycle, start, message, command, amount, currency, anonymity, description, media}) {
+  put({recurrence_id, cycle, start, message, command, to, amount, currency, anonymity, description, media}) {
     if (message) { // edit recurrence message
       return request({
         method: 'PUT',
@@ -70,7 +70,7 @@ class Recurrences {
       return request({
         method: 'PUT',
         uri: this.base_url + '/recurrences/' + recurrence_id,
-        form: {cycle, start, command, amount, currency, anonymity, description, media},
+        form: {cycle, start, command, to, amount, currency, anonymity, description, media},
         json: true,
         headers: {
           "Authorization": 'Basic ' + Buffer.from(this.developer_key + ':' + this.developer_secret).toString('base64'),

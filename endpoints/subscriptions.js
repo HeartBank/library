@@ -19,7 +19,7 @@ class Subscriptions {
     return request({
       method: 'GET',
       uri: this.base_url + '/subscriptions',
-      form: {},
+      qs: {},
       json: true,
       headers: {
         "Authorization": 'Basic ' + Buffer.from(this.developer_key + ':' + this.developer_secret).toString('base64'),
@@ -43,7 +43,7 @@ class Subscriptions {
 
   put({subscription_id, webhook}) {
     return request({
-      method: 'GET',
+      method: 'PUT',
       uri: this.base_url + '/subscriptions/' + subscription_id,
       form: {webhook},
       json: true,
@@ -69,4 +69,4 @@ class Subscriptions {
 
 }
 
-module.exports = (developer_key, developer_secret, base_url client_id, auth_token, ids) => new Subscriptions(developer_key, developer_secret, base_url, client_id, auth_token, ids);
+module.exports = (developer_key, developer_secret, base_url, client_id, auth_token, ids) => new Subscriptions(developer_key, developer_secret, base_url, client_id, auth_token, ids);
