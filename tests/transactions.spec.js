@@ -6,26 +6,42 @@ const transactions = endpoints.transactions(process.env.CLIENT_ID, process.env.A
 const fs = require('fs');
 const media = fs.createReadStream(__dirname + '/heartbank.gif').toString('base64');
 
-describe("Testing /transactions", function() {
+describe("Testing /transactions", () => {
 
-  it("get from branch", function() {
-    const get = transactions.get({q:"hello", fetch:10, page:2, start:"2017-1-7", end:"2017-1-8", filters:{account:false, fund:false, reserve:false}});
-    expect(get).toBe(null);
+  it("get from branch", done => {
+    transactions.get({q:"hello", fetch:10, page:2, start:"2017-1-7", end:"2017-1-8", filters:{account:false, fund:false, reserve:false}})
+    .then(data => {
+      console.log(data);
+      expect(data.code).toBe(200);
+      done();
+    });
   });
 
-  it("get from customer", function() {
-    const get = transactions.get({customer:true, q:"hello", fetch:10, page:2, start:"2017-1-7", end:"2017-1-8", filters:{account:false, fund:false, reserve:false}});
-    expect(get).toBe(null);
+  it("get from customer", done => {
+    transactions.get({customer:true, q:"hello", fetch:10, page:2, start:"2017-1-7", end:"2017-1-8", filters:{account:false, fund:false, reserve:false}})
+    .then(data => {
+      console.log(data);
+      expect(data.code).toBe(200);
+      done();
+    });
   });
 
-  it("post with transaction", function() {
-    const post = transactions.post({command:"give", amount:10.40, currency:"USD", anonymity:false, description:"🏡 hello world", media});
-    expect(post).toBe(null);
+  it("post with transaction", done => {
+    transactions.post({command:"give", amount:10.40, currency:"USD", anonymity:false, description:"🏡 hello world", media})
+    .then(data => {
+      console.log(data);
+      expect(data.code).toBe(200);
+      done();
+    });
   });
 
-  it("post with message", function() {
-    const post = transactions.post({message:"🏡 hello world", media});
-    expect(post).toBe(null);
+  it("post with message", done => {
+    transactions.post({message:"🏡 hello world", media})
+    .then(data => {
+      console.log(data);
+      expect(data.code).toBe(200);
+      done();
+    });
   });
 
 });

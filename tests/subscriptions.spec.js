@@ -4,26 +4,42 @@ require('dotenv').config();
 const endpoints = require('../endpoints')(process.env.DEVELOPER_KEY, process.env.DEVELOPER_SECRET, process.env.LOCALHOST);
 const subscriptions = endpoints.subscriptions(process.env.CLIENT_ID, process.env.AUTH_TOKEN, [process.env.BRANCH_ID, process.env.CUSTOMER_ID, process.env.USER_ID]);
 
-describe("Testing /subscriptions", function() {
+describe("Testing /subscriptions", () => {
 
-  it("get all subscriptions", function() {
-    const get = subscriptions.get();
-    expect(get).toBe(null);
+  it("get all subscriptions", done => {
+    subscriptions.get()
+    .then(data => {
+      console.log(data);
+      expect(data.code).toBe(200);
+      done();
+    });
   });
 
-  it("post new subscription", function() {
-    const post = subscriptions.post({webhook:"http://example.com"});
-    expect(post).toBe(null);
+  it("post new subscription", done => {
+    subscriptions.post({webhook:"http://example.com"})
+    .then(data => {
+      console.log(data);
+      expect(data.code).toBe(200);
+      done();
+    });
   });
 
-  it("edit subscription", function() {
-    const put = subscriptions.put({subscription_id:1234, webhook:"http://example.com"});
-    expect(put).toBe(null);
+  it("edit subscription", done => {
+    subscriptions.put({subscription_id:1234, webhook:"http://example.com"})
+    .then(data => {
+      console.log(data);
+      expect(data.code).toBe(200);
+      done();
+    });
   });
 
-  it("delete subscription", function() {
-    const del = subscriptions.delete({subscription_id:1234});
-    expect(del).toBe(null);
+  it("delete subscription", done => {
+    subscriptions.delete({subscription_id:process.env.SUBSCRIPTION_ID})
+    .then(data => {
+      console.log(data);
+      expect(data.code).toBe(200);
+      done();
+    });
   });
 
 });
