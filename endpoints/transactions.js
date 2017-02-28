@@ -46,7 +46,7 @@ class Transactions {
       return request({
         method: 'POST',
         uri: this.base_url + '/transactions/message',
-        form: {message, media},
+        form: {message, media:Buffer.from(media).toString('base64')},
         json: true,
         headers: {
           "Authorization": 'Basic ' + Buffer.from(this.developer_key + ':' + this.developer_secret).toString('base64'),
@@ -57,7 +57,7 @@ class Transactions {
       return request({
         method: 'POST',
         uri: this.base_url + '/transactions',
-        form: {command, to, amount, currency, anonymity, description, media},
+        form: {command, to, amount, currency, anonymity, description, media:Buffer.from(media).toString('base64')},
         json: true,
         headers: {
           "Authorization": 'Basic ' + Buffer.from(this.developer_key + ':' + this.developer_secret).toString('base64'),
