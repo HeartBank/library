@@ -33,7 +33,7 @@ class Recurrences {
       return request({
         method: 'POST',
         uri: this.base_url + '/recurrences/message',
-        form: {cycle, start, message, media:Buffer.from(media).toString('base64')},
+        form: {cycle, start, message, media:media ? Buffer.from(media).toString('base64') : null},
         json: true,
         headers: {
           "Authorization": 'Basic ' + Buffer.from(this.developer_key + ':' + this.developer_secret).toString('base64'),
@@ -44,7 +44,7 @@ class Recurrences {
       return request({
         method: 'POST',
         uri: this.base_url + '/recurrences',
-        form: {cycle, start, command, to, amount, currency, anonymity, description, media:Buffer.from(media).toString('base64')},
+        form: {cycle, start, command, to, amount, currency, anonymity, description, media:media ? Buffer.from(media).toString('base64') : null},
         json: true,
         headers: {
           "Authorization": 'Basic ' + Buffer.from(this.developer_key + ':' + this.developer_secret).toString('base64'),
@@ -59,7 +59,7 @@ class Recurrences {
       return request({
         method: 'PUT',
         uri: this.base_url + '/recurrences/' + recurrence_id + '/message',
-        form: {cycle, start, message, media:Buffer.from(media).toString('base64')},
+        form: {cycle, start, message, media:media ? Buffer.from(media).toString('base64') : null},
         json: true,
         headers: {
           "Authorization": 'Basic ' + Buffer.from(this.developer_key + ':' + this.developer_secret).toString('base64'),
@@ -70,7 +70,7 @@ class Recurrences {
       return request({
         method: 'PUT',
         uri: this.base_url + '/recurrences/' + recurrence_id,
-        form: {cycle, start, command, to, amount, currency, anonymity, description, media:Buffer.from(media).toString('base64')},
+        form: {cycle, start, command, to, amount, currency, anonymity, description, media:media ? Buffer.from(media).toString('base64') : null},
         json: true,
         headers: {
           "Authorization": 'Basic ' + Buffer.from(this.developer_key + ':' + this.developer_secret).toString('base64'),

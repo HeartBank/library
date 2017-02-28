@@ -27,7 +27,7 @@ describe("Testing /recurrences", () => {
   });
 
   it("post new recurrence message", done => {
-    recurrences.post({cycle:"Daily", start:"2017-1-7 12:00", message:"🏡 hello world", media})
+    recurrences.post({cycle:"Daily", start:"2017-1-7 12:00", message:"🏡 hello world", media:null})
     .then(data => {
       console.log(data);
       expect(data.code).toBe(200);

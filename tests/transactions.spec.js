@@ -27,7 +27,7 @@ xdescribe("Testing /transactions", () => {
   });
 
   it("post with transaction", done => {
-    transactions.post({command:"give", to:"John", amount:10.40, currency:"USD", anonymity:false, description:"🏡 hello world", media})
+    transactions.post({command:"give", to:"John", amount:10.40, currency:"USD", anonymity:false, description:"🏡 hello world", media:null})
     .then(data => {
       console.log(data);
       expect(data.code).toBe(200);
