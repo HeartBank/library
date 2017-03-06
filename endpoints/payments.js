@@ -41,12 +41,12 @@ class Payments {
     }
   }
 
-  post({payment_id, auth_code, amount, description}) {
-    if (payment_id && auth_code) { // process payment
+  post({payment_id, code, amount, description}) {
+    if (payment_id) { // process payment
       return request({
         method: 'POST',
         uri: this.base_url + '/payments/' + payment_id,
-        form: {auth_code},
+        form: {code},
         json: true,
         headers: {
           "Authorization": 'Basic ' + Buffer.from(this.developer_key + ':' + this.developer_secret).toString('base64'),

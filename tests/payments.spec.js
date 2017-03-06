@@ -34,7 +34,7 @@ xdescribe("Testing /payments", () => {
   });
 
   it("process payment", done => {
-    payments.post({payment_id:process.env.PAYMENT_ID, auth_code:process.env.AUTH_CODE})
+    payments.post({payment_id:process.env.PAYMENT_ID, code:process.env.AUTH_CODE})
     .then(data => {
       console.log(data);
       expect(data.code).toBe(200);

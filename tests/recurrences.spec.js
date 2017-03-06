@@ -6,7 +6,7 @@ const recurrences = endpoints.recurrences(process.env.CLIENT_ID, process.env.AUT
 const fs = require('fs');
 const media = fs.readFileSync(__dirname + '/heartbank.gif');
 
-describe("Testing /recurrences", () => {
+xdescribe("Testing /recurrences", () => {
 
   it("get all recurrences", done => {
     recurrences.get()
