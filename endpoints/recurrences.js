@@ -21,10 +21,8 @@ class Recurrences {
       uri: this.base_url + '/recurrences',
       qs: {},
       json: true,
-      headers: {
-        "Authorization": 'Basic ' + Buffer.from(this.developer_key + ':' + this.developer_secret).toString('base64'),
-        "Cookie": `client=${this.client_id}; token=${this.auth_token}`
-      }
+      headers: {Cookie: `client=${this.client_id}; token=${this.auth_token}`},
+      auth: {user:this.developer_key, pass:this.developer_secret, sendImmediately:true}
     });
   }
 
@@ -35,10 +33,8 @@ class Recurrences {
         uri: this.base_url + '/recurrences/message',
         form: {cycle, start, message, media:media ? Buffer.from(media).toString('base64') : null},
         json: true,
-        headers: {
-          "Authorization": 'Basic ' + Buffer.from(this.developer_key + ':' + this.developer_secret).toString('base64'),
-          "Cookie": `client=${this.client_id}; token=${this.auth_token}`
-        }
+        headers: {Cookie: `client=${this.client_id}; token=${this.auth_token}`},
+        auth: {user:this.developer_key, pass:this.developer_secret, sendImmediately:true}
       });
     } else { // new recurrence transaction
       return request({
@@ -46,10 +42,8 @@ class Recurrences {
         uri: this.base_url + '/recurrences',
         form: {cycle, start, command, to, amount, currency, anonymity, description, media:media ? Buffer.from(media).toString('base64') : null},
         json: true,
-        headers: {
-          "Authorization": 'Basic ' + Buffer.from(this.developer_key + ':' + this.developer_secret).toString('base64'),
-          "Cookie": `client=${this.client_id}; token=${this.auth_token}`
-        }
+        headers: {Cookie: `client=${this.client_id}; token=${this.auth_token}`},
+        auth: {user:this.developer_key, pass:this.developer_secret, sendImmediately:true}
       });
     }
   }
@@ -61,10 +55,8 @@ class Recurrences {
         uri: this.base_url + '/recurrences/' + recurrence_id + '/message',
         form: {cycle, start, message, media:media ? Buffer.from(media).toString('base64') : null},
         json: true,
-        headers: {
-          "Authorization": 'Basic ' + Buffer.from(this.developer_key + ':' + this.developer_secret).toString('base64'),
-          "Cookie": `client=${this.client_id}; token=${this.auth_token}`
-        }
+        headers: {Cookie: `client=${this.client_id}; token=${this.auth_token}`},
+        auth: {user:this.developer_key, pass:this.developer_secret, sendImmediately:true}
       });
     } else { // edit recurrence transaction
       return request({
@@ -72,10 +64,8 @@ class Recurrences {
         uri: this.base_url + '/recurrences/' + recurrence_id,
         form: {cycle, start, command, to, amount, currency, anonymity, description, media:media ? Buffer.from(media).toString('base64') : null},
         json: true,
-        headers: {
-          "Authorization": 'Basic ' + Buffer.from(this.developer_key + ':' + this.developer_secret).toString('base64'),
-          "Cookie": `client=${this.client_id}; token=${this.auth_token}`
-        }
+        headers: {Cookie: `client=${this.client_id}; token=${this.auth_token}`},
+        auth: {user:this.developer_key, pass:this.developer_secret, sendImmediately:true}
       });
     }
   }
@@ -86,10 +76,8 @@ class Recurrences {
       uri: this.base_url + '/recurrences/' + recurrence_id,
       form: {},
       json: true,
-      headers: {
-        "Authorization": 'Basic ' + Buffer.from(this.developer_key + ':' + this.developer_secret).toString('base64'),
-        "Cookie": `client=${this.client_id}; token=${this.auth_token}`
-      }
+      headers: {Cookie: `client=${this.client_id}; token=${this.auth_token}`},
+      auth: {user:this.developer_key, pass:this.developer_secret, sendImmediately:true}
     });
   }
 

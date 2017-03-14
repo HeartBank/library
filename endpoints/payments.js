@@ -22,10 +22,8 @@ class Payments {
         uri: this.base_url + '/payments/' + payment_id,
         qs: {},
         json: true,
-        headers: {
-          "Authorization": 'Basic ' + Buffer.from(this.developer_key + ':' + this.developer_secret).toString('base64'),
-          "Cookie": `client=${this.client_id}; token=${this.auth_token}`
-        }
+        headers: {Cookie: `client=${this.client_id}; token=${this.auth_token}`},
+        auth: {user:this.developer_key, pass:this.developer_secret, sendImmediately:true}
       });
     } else { // return all payments
       return request({
@@ -33,10 +31,8 @@ class Payments {
         uri: this.base_url + '/payments',
         qs: {},
         json: true,
-        headers: {
-          "Authorization": 'Basic ' + Buffer.from(this.developer_key + ':' + this.developer_secret).toString('base64'),
-          "Cookie": `client=${this.client_id}; token=${this.auth_token}`
-        }
+        headers: {Cookie: `client=${this.client_id}; token=${this.auth_token}`},
+        auth: {user:this.developer_key, pass:this.developer_secret, sendImmediately:true}
       });
     }
   }
@@ -48,10 +44,8 @@ class Payments {
         uri: this.base_url + '/payments/' + payment_id,
         form: {code},
         json: true,
-        headers: {
-          "Authorization": 'Basic ' + Buffer.from(this.developer_key + ':' + this.developer_secret).toString('base64'),
-          "Cookie": `client=${this.client_id}; token=${this.auth_token}`
-        }
+        headers: {Cookie: `client=${this.client_id}; token=${this.auth_token}`},
+        auth: {user:this.developer_key, pass:this.developer_secret, sendImmediately:true}
       });
     } else { // create new payment
       return request({
@@ -59,10 +53,8 @@ class Payments {
         uri: this.base_url + '/payments',
         form: {amount, description},
         json: true,
-        headers: {
-          "Authorization": 'Basic ' + Buffer.from(this.developer_key + ':' + this.developer_secret).toString('base64'),
-          "Cookie": `client=${this.client_id}; token=${this.auth_token}`
-        }
+        headers: {Cookie: `client=${this.client_id}; token=${this.auth_token}`},
+        auth: {user:this.developer_key, pass:this.developer_secret, sendImmediately:true}
       });
     }
   }

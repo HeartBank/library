@@ -4,30 +4,22 @@ const request = require('request-promise');
 
 class Users {
 
-  constructor(developer_key, developer_secret, base_url, client_id, auth_token, [branch_id, customer_id, user_id]) {
+  constructor(developer_key, developer_secret, base_url) {
     this.developer_key = developer_key;
     this.developer_secret = developer_secret;
     this.base_url = base_url;
-    this.client_id = client_id;
-    this.auth_token = auth_token;
-    this.branch_id = branch_id;
-    this.customer_id = customer_id;
-    this.user_id = user_id;
   }
 
-  get() {
+  get(user_id=null) {
     return request({
       method: 'GET',
-      uri: this.base_url + '/users/' + this.user_id,
+      uri: this.base_url + '/users' + (user_id ? '/' + user_id : ''),
       qs: {},
       json: true,
-      headers: {
-        "Authorization": 'Basic ' + Buffer.from(this.developer_key + ':' + this.developer_secret).toString('base64'),
-        "Cookie": `client=${this.client_id}; token=${this.auth_token}`
-      }
+      auth: {user:this.developer_key, pass:this.developer_secret, sendImmediately:true}
     });
   }
 
 }
 
-module.exports = (developer_key, developer_secret, base_url, client_id, auth_token, ids) => new Users(developer_key, developer_secret, base_url, client_id, auth_token, ids);
+module.exports = (developer_key, developer_secret, base_url) => new Users(developer_key, developer_secret, base_url);

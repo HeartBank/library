@@ -21,10 +21,8 @@ class Customers {
       uri: this.base_url + '/customers/' + this.customer_id,
       qs: {},
       json: true,
-      headers: {
-        "Authorization": 'Basic ' + Buffer.from(this.developer_key + ':' + this.developer_secret).toString('base64'),
-        "Cookie": `client=${this.client_id}; token=${this.auth_token}`
-      }
+      headers: {Cookie: `client=${this.client_id}; token=${this.auth_token}`},
+      auth: {user:this.developer_key, pass:this.developer_secret, sendImmediately:true}
     });
   }
 

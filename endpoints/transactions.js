@@ -22,10 +22,8 @@ class Transactions {
         uri: this.base_url + '/transactions/' + this.branch_id + '/' + this.customer_id,
         qs: {q, fetch, page, start, end, account, fund, reserve},
         json: true,
-        headers: {
-          "Authorization": 'Basic ' + Buffer.from(this.developer_key + ':' + this.developer_secret).toString('base64'),
-          "Cookie": `client=${this.client_id}; token=${this.auth_token}`
-        }
+        headers: {Cookie: `client=${this.client_id}; token=${this.auth_token}`},
+        auth: {user:this.developer_key, pass:this.developer_secret, sendImmediately:true}
       });
     } else { // return branch's transactions
       return request({
@@ -33,10 +31,8 @@ class Transactions {
         uri: this.base_url + '/transactions/' + this.branch_id,
         qs: {q, fetch, page, start, end, account, fund, reserve},
         json: true,
-        headers: {
-          "Authorization": 'Basic ' + Buffer.from(this.developer_key + ':' + this.developer_secret).toString('base64'),
-          "Cookie": `client=${this.client_id}; token=${this.auth_token}`
-        }
+        headers: {Cookie: `client=${this.client_id}; token=${this.auth_token}`},
+        auth: {user:this.developer_key, pass:this.developer_secret, sendImmediately:true}
       });
     }
   }
@@ -48,10 +44,8 @@ class Transactions {
         uri: this.base_url + '/transactions/message',
         form: {message, media:media ? Buffer.from(media).toString('base64') : null},
         json: true,
-        headers: {
-          "Authorization": 'Basic ' + Buffer.from(this.developer_key + ':' + this.developer_secret).toString('base64'),
-          "Cookie": `client=${this.client_id}; token=${this.auth_token}`
-        }
+        headers: {Cookie: `client=${this.client_id}; token=${this.auth_token}`},
+        auth: {user:this.developer_key, pass:this.developer_secret, sendImmediately:true}
       });
     } else { // new transaction
       return request({
@@ -59,10 +53,8 @@ class Transactions {
         uri: this.base_url + '/transactions',
         form: {command, to, amount, currency, anonymity, description, media:media ? Buffer.from(media).toString('base64') : null},
         json: true,
-        headers: {
-          "Authorization": 'Basic ' + Buffer.from(this.developer_key + ':' + this.developer_secret).toString('base64'),
-          "Cookie": `client=${this.client_id}; token=${this.auth_token}`
-        }
+        headers: {Cookie: `client=${this.client_id}; token=${this.auth_token}`},
+        auth: {user:this.developer_key, pass:this.developer_secret, sendImmediately:true}
       });
     }
   }

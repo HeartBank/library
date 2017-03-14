@@ -16,7 +16,8 @@ class Clients {
       uri: this.base_url + '/clients/auth',
       form: {username, passcode},
       json: true,
-      headers: {"Authorization": 'Basic ' + Buffer.from(this.developer_key + ':' + this.developer_secret).toString('base64')} // Note: Cannot have Cookie
+      headers: {Cookie: ""}, // Note: Cannot have Cookie
+      auth: {user:this.developer_key, pass:this.developer_secret, sendImmediately:true}
     });
   }
 
@@ -26,10 +27,8 @@ class Clients {
       uri: this.base_url + '/clients',
       qs: {},
       json: true,
-      headers: {
-        "Authorization": 'Basic ' + Buffer.from(this.developer_key + ':' + this.developer_secret).toString('base64'),
-        "Cookie": `client=${client_id}; token=${auth_token}`
-      }
+      headers: {Cookie: `client=${client_id}; token=${auth_token}`},
+      auth: {user:this.developer_key, pass:this.developer_secret, sendImmediately:true}
     });
   }
 
@@ -39,10 +38,8 @@ class Clients {
       uri: this.base_url + '/clients',
       form: {},
       json: true,
-      headers: {
-        "Authorization": 'Basic ' + Buffer.from(this.developer_key + ':' + this.developer_secret).toString('base64'),
-        "Cookie": `client=${client_id}; token=${auth_token}`
-      }
+      headers: {Cookie: `client=${client_id}; token=${auth_token}`},
+      auth: {user:this.developer_key, pass:this.developer_secret, sendImmediately:true}
     });
   }
 

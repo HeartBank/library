@@ -8,12 +8,12 @@ class Endpoints {
     this.base_url = base_url;
   }
 
-  clients() {
-    return require('./clients')(this.developer_key, this.developer_secret, this.base_url);
+  users() {
+    return require('./users')(this.developer_key, this.developer_secret, this.base_url);
   }
 
-  users(client_id, auth_token, ids) {
-    return require('./users')(this.developer_key, this.developer_secret, this.base_url, client_id, auth_token, ids);
+  clients() {
+    return require('./clients')(this.developer_key, this.developer_secret, this.base_url);
   }
 
   branches(client_id, auth_token, ids) {
