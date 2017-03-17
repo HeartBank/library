@@ -4,7 +4,7 @@ require('dotenv').config();
 const endpoints = require('../endpoints')(process.env.DEVELOPER_KEY, process.env.DEVELOPER_SECRET, process.env.LOCALHOST);
 const users = endpoints.users();
 
-describe("Testing /users", () => {
+xdescribe("Testing /users", () => {
 
   it("get profile", done => {
     users.get()
@@ -19,7 +19,7 @@ describe("Testing /users", () => {
     users.get(process.env.USER_ID)
     .then(data => {
       console.log(data);
-      expect(data.code).toBe(200);
+      expect(data.code).toBe(410);
       done();
     });
   });
@@ -37,7 +37,7 @@ describe("Testing /users", () => {
     users.post(process.env.USER_ID).thank({address:"1PZTKgkvfog8MTroMhqwgkXV9HwL8Xtmtc", amount:0.0001, description:"hello world", pin:"432782265"})
     .then(data => {
       console.log(data);
-      expect(data.code).toBe(200);
+      expect(data.code).toBe(410);
       done();
     });
   });
@@ -55,7 +55,7 @@ describe("Testing /users", () => {
     users.put(process.env.USER_ID).withdraw({address:"1PZTKgkvfog8MTroMhqwgkXV9HwL8Xtmtc", cycle:"daily", pin:"432782265"})
     .then(data => {
       console.log(data);
-      expect(data.code).toBe(200);
+      expect(data.code).toBe(410);
       done();
     });
   });

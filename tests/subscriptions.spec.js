@@ -16,19 +16,19 @@ xdescribe("Testing /subscriptions", () => {
   });
 
   it("post new subscription", done => {
-    subscriptions.post({webhook:"http://example.com"})
+    subscriptions.post({webhook:process.env.LOCALHOST})
     .then(data => {
       console.log(data);
-      expect(data.code).toBe(200);
+      expect(data.code === 410 || data.code === 412).toBe(true);
       done();
     });
   });
 
   it("edit subscription", done => {
-    subscriptions.put({subscription_id:process.env.SUBSCRIPTION_ID, webhook:"http://example.com"})
+    subscriptions.put({subscription_id:process.env.SUBSCRIPTION_ID, webhook:process.env.LOCALHOST})
     .then(data => {
       console.log(data);
-      expect(data.code).toBe(200);
+      expect(data.code).toBe(410);
       done();
     });
   });
@@ -37,7 +37,7 @@ xdescribe("Testing /subscriptions", () => {
     subscriptions.delete({subscription_id:process.env.SUBSCRIPTION_ID})
     .then(data => {
       console.log(data);
-      expect(data.code).toBe(200);
+      expect(data.code).toBe(410);
       done();
     });
   });

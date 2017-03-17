@@ -10,8 +10,6 @@ class Recurrences {
     this.base_url = base_url;
     this.client_id = client_id;
     this.auth_token = auth_token;
-    this.branch_id = branch_id;
-    this.customer_id = customer_id;
   }
 
   get() {

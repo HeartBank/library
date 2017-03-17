@@ -18,7 +18,7 @@ xdescribe("Testing /recurrences", () => {
   });
 
   it("post new recurrence transaction", done => {
-    recurrences.post({cycle:"Daily", start:"2017-1-7 12:00", command:"give", to:"John", amount:10.40, currency:"USD", anonymity:false, description:"🏡 hello world", media})
+    recurrences.post({cycle:"Daily", start:"2020-1-7 12:00", command:"give", to:"John", amount:10.40, currency:"USD", anonymity:false, description:"🏡 hello world", media})
     .then(data => {
       console.log(data);
       expect(data.code).toBe(200);
@@ -27,7 +27,7 @@ xdescribe("Testing /recurrences", () => {
   });
 
   it("post new recurrence message", done => {
-    recurrences.post({cycle:"Daily", start:"2017-1-7 12:00", message:"🏡 hello world", media:null})
+    recurrences.post({cycle:"Daily", start:"2020-1-7 12:00", message:"🏡 hello world", media:null})
     .then(data => {
       console.log(data);
       expect(data.code).toBe(200);
@@ -35,29 +35,29 @@ xdescribe("Testing /recurrences", () => {
     });
   });
 
-  xit("edit recurrence transaction", done => {
+  it("edit recurrence transaction", done => {
     recurrences.put({recurrence_id:process.env.RECURRENCE_ID, cycle:"Daily", start:"2017-1-7 12:00", command:"give", to:"John", amount:10.40, currency:"USD", anonymity:false, description:"🏡 hello world", media})
     .then(data => {
       console.log(data);
-      expect(data.code).toBe(200);
+      expect(data.code).toBe(410);
       done();
     });
   });
 
-  xit("edit recurrence message", done => {
+  it("edit recurrence message", done => {
     recurrences.put({recurrence_id:process.env.RECURRENCE_ID, cycle:"Daily", start:"2017-1-7 12:00", message:"🏡 hello world", media})
     .then(data => {
       console.log(data);
-      expect(data.code).toBe(200);
+      expect(data.code).toBe(410);
       done();
     });
   });
 
-  xit("delete recurrence", done => {
+  it("delete recurrence", done => {
     recurrences.delete({recurrence_id:process.env.RECURRENCE_ID})
     .then(data => {
       console.log(data);
-      expect(data.code).toBe(200);
+      expect(data.code).toBe(410);
       done();
     });
   });
