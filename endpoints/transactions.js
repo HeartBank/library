@@ -4,22 +4,19 @@ const request = require('request-promise');
 
 class Transactions {
 
-  constructor(developer_key, developer_secret, base_url, client_id, auth_token, [branch_id, customer_id, user_id]) {
+  constructor(developer_key, developer_secret, base_url, client_id, auth_token) {
     this.developer_key = developer_key;
     this.developer_secret = developer_secret;
     this.base_url = base_url;
     this.client_id = client_id;
     this.auth_token = auth_token;
-    this.branch_id = branch_id;
-    this.customer_id = customer_id;
-    this.user_id = user_id;
   }
 
-  get({customer, q, fetch, page, start, end, filters:{account, fund, reserve}}) {
-    if (customer) { // return customer's transactions
+  get({branch_id, customer_id, q, fetch, page, start, end, filters:{account, fund, reserve}}) {
+    if (customer_id) { // return customer's transactions
       return request({
         method: 'GET',
-        uri: this.base_url + '/transactions/' + this.branch_id + '/' + this.customer_id,
+        uri: this.base_url + '/transactions/' + branch_id + '/' + customer_id,
         qs: {q, fetch, page, start, end, account, fund, reserve},
         json: true,
         headers: {Cookie: `client=${this.client_id}; token=${this.auth_token}`},
@@ -28,7 +25,7 @@ class Transactions {
     } else { // return branch's transactions
       return request({
         method: 'GET',
-        uri: this.base_url + '/transactions/' + this.branch_id,
+        uri: this.base_url + '/transactions/' + branch_id,
         qs: {q, fetch, page, start, end, account, fund, reserve},
         json: true,
         headers: {Cookie: `client=${this.client_id}; token=${this.auth_token}`},
@@ -61,4 +58,4 @@ class Transactions {
 
 }
 
-module.exports = (developer_key, developer_secret, base_url, client_id, auth_token, ids) => new Transactions(developer_key, developer_secret, base_url, client_id, auth_token, ids);
+module.exports = (developer_key, developer_secret, base_url, client_id, auth_token) => new Transactions(developer_key, developer_secret, base_url, client_id, auth_token);
