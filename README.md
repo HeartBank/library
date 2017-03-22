@@ -1,2 +1,1 @@
-# library
-Node Module
+`npm install heartbank --save`
