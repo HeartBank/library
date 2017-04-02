@@ -2,7 +2,7 @@
 
 class Endpoints {
 
-  constructor(developer_key, developer_secret, base_url="https://endpoint.heartbank.cloud") {
+  constructor(developer_key, developer_secret, base_url="https://kiitos.heartbank.cloud") {
     this.developer_key = developer_key;
     this.developer_secret = developer_secret;
     this.base_url = base_url;
